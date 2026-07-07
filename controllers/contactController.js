@@ -41,18 +41,99 @@ Email: ${email}
 ${message}
       `,
       html: `
-        <div style="font-family:Arial,sans-serif;">
-          <h2>New Portfolio Contact</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body style="margin:0;padding:0;background:#f4f6f9;font-family:Arial,Helvetica,sans-serif;">
 
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Subject:</strong> ${subject}</p>
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 0;background:#f4f6f9;">
+    <tr>
+      <td align="center">
 
-          <h3>Message</h3>
+        <table width="600" cellpadding="0" cellspacing="0"
+          style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.08);">
 
-          <p>${message.replace(/\n/g, "<br>")}</p>
-        </div>
-      `,
+          <!-- Header -->
+          <tr>
+            <td style="background:#1e293b;padding:25px;text-align:center;">
+              <h1 style="margin:0;color:#ffffff;font-size:24px;">
+                📩 New Portfolio Contact
+              </h1>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding:30px;">
+
+              <p style="font-size:16px;color:#555;">
+                You have received a new message from your portfolio website.
+              </p>
+
+              <table width="100%" cellpadding="12" cellspacing="0"
+                style="border-collapse:collapse;margin-top:20px;">
+
+                <tr style="background:#f8fafc;">
+                  <td style="font-weight:bold;width:140px;">👤 Name</td>
+                  <td>${name}</td>
+                </tr>
+
+                <tr>
+                  <td style="font-weight:bold;">📧 Email</td>
+                  <td>
+                    <a href="mailto:${email}" style="color:#2563eb;text-decoration:none;">
+                      ${email}
+                    </a>
+                  </td>
+                </tr>
+
+                <tr style="background:#f8fafc;">
+                  <td style="font-weight:bold;">📝 Subject</td>
+                  <td>${subject}</td>
+                </tr>
+
+              </table>
+
+              <div style="margin-top:30px;">
+                <h3 style="margin-bottom:10px;color:#1e293b;">
+                  💬 Message
+                </h3>
+
+                <div style="
+                  background:#f8fafc;
+                  border-left:4px solid #2563eb;
+                  padding:18px;
+                  border-radius:8px;
+                  color:#444;
+                  line-height:1.7;
+                ">
+                  ${message.replace(/\n/g, "<br>")}
+                </div>
+              </div>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td
+              style="padding:20px;background:#f8fafc;text-align:center;font-size:13px;color:#777;">
+              This message was sent from your
+              <strong>Portfolio Contact Form</strong>.
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
+`
     });
 
     return res.status(200).json({
